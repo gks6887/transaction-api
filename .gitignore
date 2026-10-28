@@ -1,1 +1,11 @@
+# Byte-compiled
+__pycache__/
+*.pyc
+
+# Environment
 /venv
+/env
+.env
+
+# Database
+db.sqlite3
