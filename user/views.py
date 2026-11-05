@@ -7,13 +7,12 @@ from permissions.is_owner import IsOwner
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
+    serializer_class = UserReadSerializer
     permission_classes = [IsAuthenticated, IsOwner]  # For Only Test purpose
 
     def get_serializer_class(self):
         if self.request.method in ["POST", "PUT", "PATCH"]:
             self.serializer_class = UserCreateUpdateSerializer
-        elif self.request.method == "GET":
-            self.serializer_class = UserReadSerializer
         return super().get_serializer_class()
 
     def get_permissions(self):
