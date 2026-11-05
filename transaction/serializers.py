@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from .models import Transaction
+from user.serializers import UserReadSerializer
+from product.serializers import ProductSerializer
 
 
 class TransactionCreateSerializer(serializers.ModelSerializer):
@@ -16,8 +18,9 @@ class TransactionCreateSerializer(serializers.ModelSerializer):
 
 
 class TransactionReadSerializer(serializers.ModelSerializer):
+    user = UserReadSerializer()
+    product = ProductSerializer()
 
     class Meta:
         model = Transaction
         fields = "__all__"
-        depth = 1
