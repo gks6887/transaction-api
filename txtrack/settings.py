@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'product',
-    'transaction'
+    'transaction',
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -140,7 +141,8 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         # 'rest_framework.authentication.SessionAuthentication',    # Authentication class for `Browsable API`
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ]
+    ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 
@@ -155,4 +157,12 @@ SIMPLE_JWT = {
     "AUTH_HEADER_NAME": "HTTP_AUTHORIZATION",
     "USER_ID_FIELD": "id",
     "USER_ID_CLAIM": "user_id",
+}
+
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Transaction API',
+    'DESCRIPTION': 'Providing transcations, products, and users records',
+    'VERSION': '1.0',
+    'SERVE_INCLUDE_SCHEMA': False,
 }

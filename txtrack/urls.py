@@ -21,6 +21,12 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
     TokenVerifyView,
 )
+from drf_spectacular.views import (
+    SpectacularAPIView, 
+    SpectacularSwaggerView,
+    SpectacularRedocView, 
+)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,5 +36,8 @@ urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view()),
     path('api/token/refresh/', TokenRefreshView.as_view()),
     path('api/token/verify/', TokenVerifyView.as_view()),
+    path('api/schema/', SpectacularAPIView.as_view(), name="schema"),
+    path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name="schema")),
+    # path('api/schema/redoc/', SpectacularRedocView.as_view(url_name="schema")),
     # path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),  # This is just for Browsable API Auth. Delete before deploy
 ]
